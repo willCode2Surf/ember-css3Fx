@@ -29,6 +29,11 @@ App.FXView = Em.View.extend({
 	click: function(){
 	    this.toggleProperty('hoover');
 	    dbg('CLICK');
+	},
+	
+	didInsertElement: function()
+	{
+		this.$().addClass('animated bounce');
 	}
 });
 
@@ -43,7 +48,7 @@ App.FX = Em.Object.extend({
 
 App.fxObj = App.FX.create({
     content: Em.Handlebars.compile("RAD"),
-    baseCss: " height: 125px; width: 600px; transition-duration: 4s; -webkit-transition-duration: 4s; /* Safari */ ",
+    baseCss: " height: 125px; width: 600px; transition-duration: 8s; -webkit-transition-duration: 4s; /* Safari */ ",
     fromCss: "",
     toCss: ""
 });
@@ -54,7 +59,11 @@ App.fxViewOne = App.FXView.create({
     template: Em.Handlebars.compile("RAD"),
     baseCss: Em.get('App.fxObj.baseCss'),
     fromCss: "background-color: black; color: yellow",
-    toCss: " transform: rotateX(45deg); -webkit-transform: rotateX(45deg); /* Safari and Chrome */"
+    toCss: " transform: rotateX(45deg); -webkit-transform: rotateX(45deg); /* Safari and Chrome */",
+    didInsertElement: function()
+	{
+		this.$().addClass('animated bounce');
+	}
 });
 
 App.fxViewTwo = App.FXView.create({
